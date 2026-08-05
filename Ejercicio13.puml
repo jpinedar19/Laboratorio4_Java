@@ -1,0 +1,27 @@
+@startuml DiagramaClases
+skinparam classAttributeIconSize 0
+
+class Persona {
+  - String nombre
+  - String id
+  + getNombre(): String
+  + getId(): String
+}
+
+class Estudiante {
+  - String carnet
+  + inscribirCurso(c: Curso): void
+  + getCarnet(): String
+}
+
+class Curso {
+  - String codigo
+  - String nombreCurso
+  + getCodigo(): String
+  + getNombreCurso(): String
+}
+
+Persona <|-- Estudiante
+Estudiante "1" -- "*" Curso : cursa >
+
+@enduml

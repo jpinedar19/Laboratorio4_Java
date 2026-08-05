@@ -1,0 +1,27 @@
+@startuml DiagramaSecuencia
+autonumber
+
+actor Usuario
+participant "Interfaz (UI)" as UI
+participant "Gestor Estudiantes" as Controller
+database "Base de Datos" as BD
+
+Usuario -> UI : Consultar información(id)
+activate UI
+
+UI -> Controller : buscarEstudiante(id)
+activate Controller
+
+Controller -> BD : SELECT * FROM Estudiantes WHERE id
+activate BD
+
+BD --> Controller : Retorna registro
+deactivate BD
+
+Controller --> UI : Retorna objeto Estudiante
+deactivate Controller
+
+UI --> Usuario : Muestra detalles en pantalla
+deactivate UI
+
+@enduml
